@@ -1,3 +1,6 @@
+# EN COURS DE DEVLOPPEMENT
+MERCI DE COTRE COMPRENSSION
+
 # Bot Manager - Application Desktop
 
 Une application desktop moderne pour gérer tous vos bots Discord depuis une interface graphique intuitive.
