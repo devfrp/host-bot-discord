@@ -92,9 +92,36 @@ body {
   background-color: rgba(16, 185, 129, 0.05);
 }
 
+
 .bot-card.selected {
   border-color: #533483;
   background-color: rgba(83, 52, 131, 0.1);
+}
+
+.bots-path-select {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+  padding: 10px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 6px;
+}
+
+.btn.btn-path {
+  background-color: #533483;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+.btn.btn-path:hover {
+  background-color: #7c3aed;
 }
 
 .bot-header {

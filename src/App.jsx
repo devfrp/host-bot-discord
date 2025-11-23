@@ -6,6 +6,7 @@ function App() {
   const [logs, setLogs] = useState([]);
   const [selectedBot, setSelectedBot] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [botsPath, setBotsPath] = useState('');
 
   useEffect(() => {
     loadBots();
@@ -20,14 +21,26 @@ function App() {
     return unsubscribe;
   }, []);
 
-  const loadBots = async () => {
+  const loadBots = async (customPath) => {
     try {
-      const botList = await window.electron.getBots();
-      setBots(botList);
+      const result = customPath
+        ? await window.electron.getBots(customPath)
+        : await window.electron.getBots();
+      setBots(result.bots || result);
+      setBotsPath(result.path || customPath || '/Bots');
       setIsLoading(false);
     } catch (error) {
       console.error('Error loading bots:', error);
       setIsLoading(false);
+    }
+  };
+
+  const handleSelectBotsPath = async () => {
+    const selectedPath = await window.electron.selectBotsPath();
+    if (selectedPath) {
+      setBotsPath(selectedPath);
+      setIsLoading(true);
+      await loadBots(selectedPath);
     }
   };
 
@@ -55,12 +68,17 @@ function App() {
     <div className="app">
       <header className="header">
         <h1>🤖 Bot Manager - Discord</h1>
-        <p>Gérez tous vos bots Discord desde une interface intuitive</p>
+        <p>Gérez tous vos bots Discord depuis une interface intuitive</p>
       </header>
 
       <div className="container">
         <div className="sidebar">
           <h2>Bots ({bots.length})</h2>
+          <div className="bots-path-select">
+            <span className="path-label">Dossier des bots :</span>
+            <span className="path-value" title={botsPath}>{botsPath}</span>
+            <button className="btn btn-path" onClick={handleSelectBotsPath}>Sélectionner un dossier</button>
+          </div>
           <div className="bot-list">
             {bots.map(bot => (
               <div
