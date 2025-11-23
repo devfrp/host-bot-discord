@@ -74,6 +74,10 @@ function App() {
                     {bot.running ? '● En ligne' : '○ Hors ligne'}
                   </span>
                 </div>
+                <div className="bot-path">
+                  <span className="path-label">📁 Chemin:</span>
+                  <span className="path-value" title={bot.path}>{bot.path}</span>
+                </div>
                 <div className="bot-actions">
                   {bot.running ? (
                     <button className="btn btn-danger" onClick={(e) => { e.stopPropagation(); handleStopBot(bot.name); }}>

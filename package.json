@@ -9,25 +9,25 @@
   "dependencies": {
     "discord.js": "^14.17.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "electron-is-dev": "^2.0.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "react-scripts": "5.0.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "electron": "^27.0.0",
     "electron-builder": "^24.6.4",
-    "@vitejs/plugin-react": "^4.0.0",
-    "vite": "^4.4.0"
+    "electron-is-dev": "^3.0.1",
+    "vite": "^5.4.21"
   },
   "scripts": {
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "electron-start": "electron .",
-    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
-    "build": "npm run react-build && electron-builder",
-    "build-win": "npm run react-build && electron-builder --win",
-    "build-mac": "npm run react-build && electron-builder --mac",
-    "build-linux": "npm run react-build && electron-builder --linux"
+    "start": "node start.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron": "electron .",
+    "package": "npm run build && electron-builder",
+    "package-win": "npm run build && electron-builder --win",
+    "package-linux": "npm run build && electron-builder --linux",
+    "package-mac": "npm run build && electron-builder --mac"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -91,4 +91,3 @@
     }
   }
 }
-
