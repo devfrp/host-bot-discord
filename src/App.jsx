@@ -93,7 +93,7 @@ function App() {
                   </span>
                 </div>
                 <div className="bot-path">
-                  <span className="path-label">📁 Chemin:</span>
+                  <span className="path-label"> Chemin:</span>
                   <span className="path-value" title={bot.path}>{bot.path}</span>
                 </div>
                 <div className="bot-actions">
