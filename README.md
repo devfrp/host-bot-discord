@@ -69,17 +69,17 @@ Les exécutables seront générés dans le dossier `dist/`.
 
 ```
 host-bot-discord/
-├── src/                    # Code React
+├── src/                    
 │   ├── App.jsx
 │   ├── App.css
 │   ├── index.jsx
 │   └── index.css
-├── public/                 # Fichiers publics
+├── public/                
 │   └── index.html
-├── Bots/                   # Vos bots Discord
-├── electron-main.js        # Processus principal Electron
-├── preload.js              # Script de précharge
-├── package.json            # Dépendances et scripts
+├── Bots/                  
+├── electron-main.js       
+├── preload.js             
+├── package.json          
 └── README.md
 ```
 
