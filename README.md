@@ -7,10 +7,10 @@ Une application desktop moderne pour gérer tous vos bots Discord depuis une int
 
 ## Fonctionnalités
 
-✨ **Interface graphique intuitive** - Gestion facile de tous vos bots
-🚀 **Démarrage/Arrêt instantané** - Contrôlez vos bots en un clic
-📊 **Logs en temps réel** - Suivez l'activité de vos bots
-💻 **Multi-plateforme** - Windows, macOS, Linux
+ **Interface graphique intuitive** - Gestion facile de tous vos bots
+ **Démarrage/Arrêt instantané** - Contrôlez vos bots en un clic
+ **Logs en temps réel** - Suivez l'activité de vos bots
+ **Multi-plateforme** - Windows, macOS, Linux
 
 ## Installation
 
