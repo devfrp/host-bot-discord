@@ -9,11 +9,14 @@ require("net").createServer().listen();
 const bots = readdirSync(join(__dirname, "./Bots"));
 
 if (bots.length === 0) {
-  console.log("No bots were found - Exiting ...");
-  process.exit(0);
+  console.log("No bots were found - continuing without starting bots...");
+  // Do not exit: keep the manager process running so the GUI or user can
+  // select a bots folder or add bots while the app is open.
+} else {
+  stdout.write(`Found ${bots.length} bots: ${bots.join(", ")}\r\n`);
 }
 
-stdout.write(`Found ${bots.length} bots: ${bots.join(", ")}\r\n`);
+// ...existing code...
 
 const defaultVersion = "19.8.1";
 const NodeVerstionOverrides = {
