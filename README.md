@@ -162,3 +162,56 @@ Pour lancer l’ensemble :
 ```bash
 ./start-all.sh
 ```
+
+---
+# Guide utilisateur rapide
+
+## Lancement du manager
+
+1. Ouvrez un terminal dans le dossier racine du projet.
+2. Exécutez la commande :
+   ```bash
+   ./start-all.sh
+   ```
+   Cela lance l’API backend et l’interface graphique Electron.
+
+## Utilisation de l’interface graphique
+
+- **Ajouter un bot** : Entrez un nom et cliquez sur « Ajouter un bot ».
+- **Démarrer/Arrêter un bot** : Utilisez les boutons à côté de chaque bot.
+- **Voir les logs** : Cliquez sur « Voir logs » pour afficher les logs du bot.
+- **Éditer la config** : Cliquez sur « Éditer config » pour modifier le fichier `config.json` du bot.
+- **Supprimer un bot** : Cliquez sur « Supprimer ».
+
+## Structure des fichiers
+
+- Les bots sont dans `host-bot-discord/Bots/`
+- Chaque bot possède un `config.json` et un `package.json` générés automatiquement.
+- L’interface graphique est dans `host-bot-discord/bot-manager-gui/`
+
+## Prérequis
+- Node.js ≥ 18
+- npm
+
+---
+## FAQ
+
+**Q : Je n’ai pas de bots affichés dans la GUI, que faire ?**  
+R : Un bot de test est créé automatiquement au premier lancement. Vous pouvez en ajouter d’autres via l’interface.
+
+**Q : Comment modifier la configuration d’un bot ?**  
+R : Cliquez sur « Éditer config » dans la GUI pour modifier le fichier `config.json` du bot.
+
+**Q : Comment voir les logs d’un bot ?**  
+R : Cliquez sur « Voir logs » à côté du bot dans l’interface.
+
+**Q : Comment supprimer un bot ?**  
+R : Cliquez sur « Supprimer » dans la GUI. Le dossier du bot sera effacé.
+
+**Q : Que faire si la GUI ne se lance pas ?**  
+R : Vérifiez que Node.js et npm sont installés, puis lancez `npm install` et `npm start` dans `host-bot-discord/bot-manager-gui`.
+
+**Q : Comment ajouter des commandes personnalisées à un bot ?**  
+R : Ajoutez-les dans le tableau `commands` du fichier `config.json` du bot.
+
+---
