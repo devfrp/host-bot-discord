@@ -2,7 +2,7 @@
   "name": "bot-manager",
   "version": "1.0.0",
   "description": "Application de gestion des bots Discord avec interface graphique",
-  "main": "public/electron.js",
+  "main": "index.js",
   "homepage": "./",
   "author": "Bot Manager Team",
   "license": "MIT",
@@ -11,23 +11,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.7.0",
-    "electron": "^27.0.0",
-    "electron-builder": "^24.6.4",
-    "electron-is-dev": "^3.0.1",
-    "vite": "^5.4.21"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "node start.js",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "electron": "electron .",
-    "package": "npm run build && electron-builder",
-    "package-win": "npm run build && electron-builder --win",
-    "package-linux": "npm run build && electron-builder --linux",
-    "package-mac": "npm run build && electron-builder --mac"
+    "start": "node index.js"
   },
   "eslintConfig": {
     "extends": "react-app"

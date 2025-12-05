@@ -1,7 +1,18 @@
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+
+// Création automatique d'un bot de test si aucun bot n'existe
+if (!fs.existsSync(botsRoot)) fs.mkdirSync(botsRoot);
+const botsList = fs.readdirSync(botsRoot).filter(f => fs.statSync(path.join(botsRoot, f)).isDirectory());
+if (botsList.length === 0) {
+  const testBotPath = path.join(botsRoot, 'bot-test');
+  fs.mkdirSync(testBotPath);
+  fs.writeFileSync(path.join(testBotPath, 'config.json'), JSON.stringify({ name: 'bot-test', auto: true }, null, 2));
+  console.log('Bot de test créé automatiquement.');
+}
 
 const app = express();
 app.use(cors());

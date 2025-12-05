@@ -97,3 +97,18 @@ MIT
 ## Support
 
 Pour toute question ou problème, veuillez ouvrir une issue sur le repository.
+
+## Lancement global (API + GUI)
+
+Pour lancer à la fois l'API backend et l'interface graphique Electron :
+
+```bash
+cd .. # depuis ce dossier, remontez à la racine du projet
+./start-all.sh
+```
+
+- Le script démarre l'API (host-bot-discord) et la GUI (bot-manager-gui) en parallèle.
+- Faites `Ctrl+C` pour tout arrêter proprement.
+- Les dépendances sont installées automatiquement si besoin.
+
+**Prérequis** : Node.js >= 18, npm

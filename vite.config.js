@@ -7,6 +7,9 @@ export default defineConfig({
     outDir: 'build',
     emptyOutDir: true,
     target: 'esnext',
+    rollupOptions: {
+      input: 'src/index.jsx',
+    },
   },
   server: {
     port: 3000,
