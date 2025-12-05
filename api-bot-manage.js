@@ -1,24 +1,40 @@
-
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 
+const botsRoot = path.join(__dirname, 'Bots');
 // Création automatique d'un bot de test si aucun bot n'existe
 if (!fs.existsSync(botsRoot)) fs.mkdirSync(botsRoot);
 const botsList = fs.readdirSync(botsRoot).filter(f => fs.statSync(path.join(botsRoot, f)).isDirectory());
 if (botsList.length === 0) {
   const testBotPath = path.join(botsRoot, 'bot-test');
   fs.mkdirSync(testBotPath);
-  fs.writeFileSync(path.join(testBotPath, 'config.json'), JSON.stringify({ name: 'bot-test', auto: true }, null, 2));
-  console.log('Bot de test créé automatiquement.');
+  fs.writeFileSync(path.join(testBotPath, 'config.json'), JSON.stringify({
+    name: 'bot-test',
+    auto: true,
+    token: 'VOTRE_TOKEN_ICI',
+    prefix: '!',
+    description: 'Bot Discord de test généré automatiquement.',
+    owner: 'VotreNom',
+    created: new Date().toISOString(),
+    commands: [
+      { name: 'ping', description: 'Répond pong', usage: '!ping' },
+      { name: 'help', description: 'Affiche l’aide', usage: '!help' }
+    ]
+  }, null, 2));
+  fs.writeFileSync(path.join(testBotPath, 'package.json'), JSON.stringify({
+    name: 'bot-test',
+    version: '1.0.0',
+    main: 'index.js',
+    description: 'Bot Discord de test généré automatiquement.'
+  }, null, 2));
+  console.log('Bot de test créé automatiquement avec config exemple.');
 }
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-const botsRoot = path.join(__dirname, 'Bots');
 
 // POST /bots : ajouter un bot
 app.post('/bots', (req, res) => {
@@ -27,7 +43,24 @@ app.post('/bots', (req, res) => {
   const botPath = path.join(botsRoot, name);
   if (fs.existsSync(botPath)) return res.status(409).json({ error: 'Bot existe déjà' });
   fs.mkdirSync(botPath);
-  fs.writeFileSync(path.join(botPath, 'config.json'), JSON.stringify({ name }, null, 2));
+  fs.writeFileSync(path.join(botPath, 'config.json'), JSON.stringify({
+    name,
+    token: 'VOTRE_TOKEN_ICI',
+    prefix: '!',
+    description: 'Bot Discord créé via l’interface.',
+    owner: 'VotreNom',
+    created: new Date().toISOString(),
+    commands: [
+      { name: 'ping', description: 'Répond pong', usage: '!ping' },
+      { name: 'help', description: 'Affiche l’aide', usage: '!help' }
+    ]
+  }, null, 2));
+  fs.writeFileSync(path.join(botPath, 'package.json'), JSON.stringify({
+    name,
+    version: '1.0.0',
+    main: 'index.js',
+    description: 'Bot Discord créé via l’interface.'
+  }, null, 2));
   res.json({ success: true });
 });
 
@@ -38,6 +71,7 @@ app.delete('/bots/:name', (req, res) => {
   if (!fs.existsSync(botPath)) return res.status(404).json({ error: 'Bot introuvable' });
   fs.rmSync(botPath, { recursive: true, force: true });
   res.json({ success: true });
+  const botsRoot = path.join(__dirname, 'Bots');
 });
 
 // GET /bots/:name/config : lire la config
@@ -51,8 +85,6 @@ app.get('/bots/:name/config', (req, res) => {
 
 // PUT /bots/:name/config : éditer la config
 app.put('/bots/:name/config', (req, res) => {
-  const botName = req.params.name;
-  const configPath = path.join(botsRoot, botName, 'config.json');
   if (!fs.existsSync(configPath)) return res.status(404).json({ error: 'Config introuvable' });
   fs.writeFileSync(configPath, JSON.stringify(req.body, null, 2));
   res.json({ success: true });

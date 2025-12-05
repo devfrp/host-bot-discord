@@ -1,0 +1,21 @@
+{
+  "name": "bot-test",
+  "auto": true,
+  "token": "VOTRE_TOKEN_ICI",
+  "prefix": "!",
+  "description": "Bot Discord de test généré automatiquement.",
+  "owner": "VotreNom",
+  "created": "2025-12-05T21:13:21.259Z",
+  "commands": [
+    {
+      "name": "ping",
+      "description": "Répond pong",
+      "usage": "!ping"
+    },
+    {
+      "name": "help",
+      "description": "Affiche l’aide",
+      "usage": "!help"
+    }
+  ]
+}

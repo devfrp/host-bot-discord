@@ -112,3 +112,53 @@ cd .. # depuis ce dossier, remontez à la racine du projet
 - Les dépendances sont installées automatiquement si besoin.
 
 **Prérequis** : Node.js >= 18, npm
+
+---
+## Astuce : création automatique d’un bot de test
+
+À chaque démarrage de l’API de gestion (`api-bot-manage.js`), un bot de test est créé automatiquement si aucun bot n’existe dans le dossier `Bots/`.
+
+- Nom du bot : `bot-test`
+- Config générée : `Bots/bot-test/config.json`
+- Vous pouvez le supprimer ou le modifier depuis l’interface graphique.
+
+Cela permet de toujours avoir un exemple visible dans la GUI dès le premier lancement.
+
+---
+## Exemple de configuration générée pour chaque bot
+
+Chaque bot créé (automatiquement ou via l’interface) possède un fichier `config.json` avec la structure suivante :
+
+```json
+{
+  "name": "bot-test",
+  "auto": true,
+  "token": "VOTRE_TOKEN_ICI",
+  "prefix": "!",
+  "description": "Bot Discord de test généré automatiquement.",
+  "owner": "VotreNom",
+  "created": "2025-12-05T21:00:00.000Z",
+  "commands": [
+    { "name": "ping", "description": "Répond pong", "usage": "!ping" },
+    { "name": "help", "description": "Affiche l’aide", "usage": "!help" }
+  ]
+}
+```
+
+- Modifiez ces champs dans l’interface graphique ou directement dans le fichier.
+- Chaque nouveau bot créé via l’API ou l’interface aura cette structure de base.
+
+---
+## Nouvelle structure du projet
+
+Tout est regroupé dans le dossier `host-bot-discord` :
+
+- **API backend** : gestion des bots, logs, configuration
+- **Interface graphique (GUI)** : `host-bot-discord/bot-manager-gui/`
+- **Bots** : `host-bot-discord/Bots/`
+- **Script global** : `start-all.sh` (lance tout depuis la racine)
+
+Pour lancer l’ensemble :
+```bash
+./start-all.sh
+```
